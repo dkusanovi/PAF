@@ -24,10 +24,7 @@ v0y = v0*(m.sin(theta))
 vy = v0y
 
 for i in range(1000):
-    t_br = t_br + dt
-    # x_br = v0*(m.cos(theta))*t_br
-    # y_br = (v0*(m.sin(theta))*t_br-(1/2)*g*t_br**2) # ilegalno je koristit ove formule :)
-    
+    t_br = t_br + dt  
     x_br = x_br + v0x*dt
     vy = vy - g*dt
     y_br = y_br + vy*dt
