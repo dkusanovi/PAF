@@ -4,7 +4,7 @@ import math
 
 def kruznica(a, b, x0, y0, r): # koordinate tocke, koordinate ishodista kruznice, radijus kruznice
 
-    udaljenost = math.sqrt((b-y0)**2+(a-x0)**2) # od ishodista
+    udaljenost = math.sqrt((b-y0)**2+(a-x0)**2) # od sredista kruznice
     udaljenost2 = math.sqrt((b-y0)**2+(a-x0)**2)-r # od kruznice
 
     if udaljenost < r:
