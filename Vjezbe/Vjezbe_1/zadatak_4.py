@@ -1,10 +1,4 @@
-x1 = 15
-y1 = 4
-x2 = 20
-y2 = 3
-
-
-def koordinate():
+def koordinate(x1, y1, x2, y2):
 
     k = (y2-y1)/(x2-x1)
     l = -k*x1 + y1
@@ -16,4 +10,4 @@ def koordinate():
 
     return k, l
 
-koordinate()
+koordinate(15, 4, 20, 3)

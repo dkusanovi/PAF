@@ -1,12 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np 
 
-x1 = 7
-x2 = 5
-y1 = 4 
-y2 = 3
 
-def koordinate():
+def koordinate(x1, y1, x2, y2):
 
 	global k
 	global l
@@ -16,7 +12,7 @@ def koordinate():
 
 	return k, l
 
-koordinate()
+koordinate(7, 5, 4, 3)
 
 # Data for plotting
 x = np.arange(-10, 10 , 0.01)
