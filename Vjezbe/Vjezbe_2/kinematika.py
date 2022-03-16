@@ -20,18 +20,12 @@ def jednoliko_gibanje(F, m, t, deltat):
     t.append(t_br)
     a.append(akc)
 
-    # for po delta t
     # t = i*deltat
 
     for i in range(1000):
         t_br = t_br + deltat
         v_br = v_br + akc*deltat  
-        x_br = x_br + v_br*deltat 
-        # i = i + 1
-        # x.append(x[i] + v[i]*deltat)
-        # v.append(v[i] + a*deltat)
-        # a.append(akc)
-        # t.append(i*deltat)
+        x_br = x_br + v_br*deltat
         x.append(x_br)
         v.append(v_br)
         a.append(akc)
