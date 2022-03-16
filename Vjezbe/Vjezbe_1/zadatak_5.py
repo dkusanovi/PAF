@@ -10,21 +10,25 @@ def koordinate(x1, y1, x2, y2):
 	k = (y2-y1)/(x2-x1)
 	l = -k*x1 + y1
 
+
+	x = np.arange(-10, 10 , 0.01)
+	y = k*x + l
+
+	fig, ax = plt.subplots()
+	plt.plot(x, y)
+
+	plt.plot(x1, y1, 'bo')
+	plt.plot(x2, y2, 'bo')
+
+	plt.title('Jednadžba pravca')
+	plt.xlabel('x')
+	plt.ylabel('y')
+	plt.grid()
+
 	return k, l
 
 koordinate(7, 5, 4, 3)
 
-# Data for plotting
-x = np.arange(-10, 10 , 0.01)
-y = k*x + l
-
-fig, ax = plt.subplots()
-ax.plot(x, y)
-ax.plot(x1, y1, "bo")
-ax.plot(x2, y2, "bo")
-
-ax.set(xlabel='x', ylabel='y', title='Jednadžba pravca')
-ax.grid()
 
 def izbor():
 
