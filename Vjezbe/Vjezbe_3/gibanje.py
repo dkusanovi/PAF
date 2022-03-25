@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-p1 = prt.Particle()
+p1 = prt.Particle(10, 40, 0, 0)
 
 p1.set_initial_conditions(10, 40, 0, 0)
 # korisnik postavlja pocetne vrijednosti brzine, kuta otklona i koordinata pocetnog polozaja
@@ -26,6 +26,6 @@ p1.set_initial_conditions(10, 40, 0, 0)
 reach_a = p1.analitical()
 reach_n = p1.range(0.01)
 
-odstupanje = ((abs(reach_a - reach_n))/reach_a)*0.01
+odstupanje = ((abs(reach_a - reach_n))/reach_a)*100
 print(odstupanje)
 
