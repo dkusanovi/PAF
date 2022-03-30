@@ -2,12 +2,11 @@ import particle as prt
 import math as m
 import matplotlib.pyplot as plt
 
-# grafove ovisnosti dometa i vremena trajanja gibanja 
-# o početnom kutu otklona 
+# grafovi ovisnosti dometa i vremena trajanja gibanja o početnom kutu otklona 
 # za neku odabranu i fiksiranu vrijednost početne brzine v0
 
 p1 = prt.Particle(50, 0, 70, 30)
-#p1.reset()
+
 
 x_os = []
 y_os = []
@@ -18,8 +17,6 @@ for kut in range(180):
     x_os.append(kut)
     kut = (kut/180)*m.pi
     p1.theta = kut
-    #p1.reset()
-    #p1.set_initial_conditions(30, kut, 20, 70)
     d = p1.range(0.01)
     t_br = p1.total_time(0.01)
     y_os.append(d)
