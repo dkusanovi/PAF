@@ -22,6 +22,8 @@ class Particle:
         theta = (theta/180)*m.pi
         self.theta = theta
         self.v0 = v0
+        self.x0 = x0
+        self.y0 = y0
 
         self.t.append(0)
         self.x.append(0)
@@ -66,3 +68,8 @@ class Particle:
             self.__move()
         print("Za v =", self.v0, "i kut", self.theta, "domet je", self.x[-1], "m.")
 
+
+
+p1 = Particle(0, 40, 0, 0)
+
+p1.set_initial_conditions(0, 40, 0, 0)
