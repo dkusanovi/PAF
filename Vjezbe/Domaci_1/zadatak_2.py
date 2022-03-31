@@ -18,7 +18,7 @@ for kut in range(180):
     kut = (kut/180)*m.pi
     p1.theta = kut
     d = p1.range(0.01)
-    t_br = p1.total_time(0.01)
+    t_br = p1.total_time()
     y_os.append(d)
     t_os.append(t_br)
 

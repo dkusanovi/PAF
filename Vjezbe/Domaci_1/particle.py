@@ -40,7 +40,7 @@ class Particle:
     def __move(self, dt): # privatna sa __
         self.t.append(self.t[-1]+dt)
         self.vy.append(self.vy[-1] - self.g*dt)
-        self.vx.append(self.vx[-1]+self.ax[-1]*dt)
+        self.vx.append(self.vx[-1] + self.ax[-1]*dt)
         self.x.append(self.x[-1] + self.vx[-1]*dt)
         self.y.append(self.y[-1] + self.vy[-1]*dt)
         
@@ -48,7 +48,8 @@ class Particle:
     def range(self, dt):
         while self.y[-1] >= 0:
             self.__move(dt)
-        return self.x[-1]
+        #if self.x[i] < 0
+        return abs(self.x[-1])
 
 
     def plot_trajectory(self):
@@ -69,8 +70,8 @@ class Particle:
         print("Za v =", self.v0, "i kut", self.theta, "domet je", self.x[-1], "m.")
 
     
-    def total_time(self, dt):
-        return len(self.vy)*dt
+    def total_time(self):
+        return self.t[-1]
 
 
     def max_speed(self):
