@@ -25,6 +25,14 @@ class Particle:
         self.x0 = x0
         self.y0 = y0
 
+        self.x = []
+        self.y = []
+        self.t = []
+        self.vx = []
+        self.vy = []
+        self.ax = []
+        self.ay = []
+
         self.t.append(0)
         self.x.append(0)
         self.y.append(0)
@@ -66,7 +74,7 @@ class Particle:
 
     def printInfo(self):
         while self.y[-1] >= 0:
-            self.__move()
+            self.__move(0.1)
         print("Za v =", self.v0, "i kut", self.theta, "domet je", self.x[-1], "m.")
 
     
@@ -77,7 +85,7 @@ class Particle:
     def max_speed(self):
         self.vy.sort()
         v_max = m.sqrt(self.vy[-1]**2+self.vx[-1]**2)
-        print(v_max)
+        return v_max
 
 
     def velocity_to_hit_target(self, r, x_m, y_m, dt): 
@@ -86,67 +94,78 @@ class Particle:
         self.x_m = x_m
         self.y_m = y_m
         self.v0 = 0
-        velocity_to_hit_target = []
+        velocity_to_hit_target = 0
+        brzina = 0
+        j = True
 
-        while True:
+        while j:
             udaljenost = []
+            self.set_initial_conditions(brzina, 30, 0, 0)
 
             while self.y[-1] >= 0:
-                self.__move(dt)      
+                self.__move(dt)
+
 
             for i in range(len(self.y)):
                 udaljenost.append(m.sqrt((y_m-self.y[i])**2+(x_m-self.x[i])**2)-r)
 
             for el in udaljenost:
-                if el <= r:
-                    velocity_to_hit_target.append(self.v0)
-                    break 
-                else:
+                if el <= 0:
+                    velocity_to_hit_target = brzina
+                    j = False
                     break
             
-            self.v0 = self.v0 + 0.1
-            if self.v0 > 50:
+            brzina = brzina + 0.1
+            if brzina > 100:
                 break
 
-            # print(velocity_to_hit_target)
-            # print(self.y_m)
+        krug = plt.Circle((self.x_m, self.y_m), self.r, fill=False)
+        fig, ax = plt.subplots()
+        ax.add_patch(krug)
+        ax.plot(self.x, self.y)
+        
+        plt.show()
+
+
+        print("Početna brzina da se pogodi kuglica je", velocity_to_hit_target, "m/s.")
 
 
     def angle_to_hit_target(self, r, x_m, y_m, dt):
         self.r = r
         self.x_m = x_m
         self.y_m = y_m
-        self.theta = 0
-        angle_to_hit_target = []
+        self.v0 = 0
+        angle_to_hit_target = 0
+        kut = 0
+        j = True
 
-        while True:
+        while j:
             udaljenost = []
+            self.set_initial_conditions(60, kut, 0, 0)
 
             while self.y[-1] >= 0:
-                self.__move(dt)      
+                self.__move(dt)
+
 
             for i in range(len(self.y)):
-                udaljenost.append(m.sqrt((self.y[i]-y_m)**2+(self.x[i]-x_m)**2)-r)
+                udaljenost.append(m.sqrt((y_m-self.y[i])**2+(x_m-self.x[i])**2)-r)
 
             for el in udaljenost:
-                if el <= r:
-                    angle_to_hit_target.append(self.theta)
-                    break 
-                else: 
-                    break 
+                if el <= 0:
+                    angle_to_hit_target = kut
+                    j = False
+                    break
             
-            self.theta = self.theta + 0.1
-            if self.theta > 90:
+            kut = kut + 0.1
+            if kut > 90:
                 break
 
-            # print(angle_to_hit_target)
-            # print(self.y_m)
+        krug = plt.Circle((self.x_m, self.y_m), self.r, fill=False)
+        fig, ax = plt.subplots()
+        ax.add_patch(krug)
+        ax.plot(self.x, self.y)
+        
+        plt.show()
 
 
-# p1 = Particle(0, 40, 0, 0)
-
-# p1.set_initial_conditions(0, 40, 0, 0)
-# p1.velocity_to_hit_target(3, 5, 2, 0.1)
-
-# velocity_to_hit_target() za zadani kut računa potrebnu početnu brzinu da se pogodi kuglica
-# angle_to_hit_target() za zadanu početnu brzinu računa kut da se pogodi kuglica
+        print("Početni kut da se pogodi kuglica je", angle_to_hit_target, "°.")
