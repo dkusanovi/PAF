@@ -1,5 +1,6 @@
 #include "Particle.h"
 #include <math.h>
+#include <iostream>
 // #include <cmath>
 
 
@@ -8,7 +9,7 @@ void Particle::evolve(float dt)
         t = t + dt;
 
         vx = vx + 0.0;
-        vy = vy - g*dt;
+        vy = vy - _g*dt;
 
         x = x + vx*dt;
         y = y + vy*dt;
@@ -17,10 +18,10 @@ void Particle::evolve(float dt)
 
 void Particle::restart()
 {
-    vx = v0*cos(theta);
-    vy = v0*sin(theta);
-    x = x0;
-    y = y0;
+    vx = _v0*cos(_theta);
+    vy = _v0*sin(_theta);
+    x = _x0;
+    y = _y0;
 };
 
 float Particle::range(float dt)
@@ -42,12 +43,13 @@ float Particle::time(float dt)
 
 Particle::Particle(float v0, float theta, float x0, float y0, float deltat, float g)
 {
-    v0 = v0;
-    theta = (theta/180)*3.14;
+    _v0 = v0;
+    _theta = (theta/180)*3.14159;
     x = x0;
     y = y0;
-    deltat = deltat;
-    g = g;
-    vx = v0*cos(theta);
-    vy = v0*sin(theta);
+    _deltat = deltat;
+    _g = g;
+    vx = v0*cos(_theta);
+    std::cout << vx << std::endl;
+    vy = v0*sin(_theta);
 };

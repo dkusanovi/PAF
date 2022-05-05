@@ -3,9 +3,9 @@ class Particle {
     private:
 
     float t, x, y, vx, vy;
-    float dt;
-    float g;
-    float v0, theta, x0, y0, deltat;
+    float _dt;
+    float _g;
+    float _v0, _theta, _x0, _y0, _deltat;
 
     void evolve(float dt);
     void restart();
