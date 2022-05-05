@@ -50,6 +50,5 @@ Particle::Particle(float v0, float theta, float x0, float y0, float deltat, floa
     _deltat = deltat;
     _g = g;
     vx = v0*cos(_theta);
-    std::cout << vx << std::endl;
     vy = v0*sin(_theta);
 };
