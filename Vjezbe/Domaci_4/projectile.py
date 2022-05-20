@@ -153,7 +153,7 @@ class Projectile:
 
 
 
-    def angle_to_hit_target(self, radijus, x_m, y_m, dt):
+    def angle_to_hit_target(self, radijus, x_m, y_m, dt, v0, m):
         self.radijus = radijus
         self.x_m = x_m
         self.y_m = y_m
@@ -165,7 +165,7 @@ class Projectile:
         while j:
             udaljenost = []
             self.reset()
-            self.set_initial_conditions(30, kut, 0, 0, 2, 0.01, 1, 1)
+            self.set_initial_conditions(v0, kut, 0, 0, 2, 0.01, 1, m) # v0, theta, x0, y0, rho, Cd, A, m
 
             while self.y[-1] >= 0:
                 self.runge_kutta(dt)
