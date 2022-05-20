@@ -141,7 +141,7 @@ class Particle:
 
         while j:
             udaljenost = []
-            self.set_initial_conditions(60, kut, 0, 0)
+            self.set_initial_conditions(10, kut, 0, 0)
 
             while self.y[-1] >= 0:
                 self.__move(dt)
