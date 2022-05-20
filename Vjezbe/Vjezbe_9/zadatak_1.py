@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 
 
 # bez otpora zraka
-b1 = b.BungeeJumping(120, 50, 80, 0.01, 1, 0, 1, 45)
+b1 = b.BungeeJumping(100, 50, 80, 0.01, 1, 0, 1, 45)
                      # h0, k, m, dt, rho, Cd, A, l0
-b1.set_initial_conditions(120, 50, 80, 0.01, 0, 1, 1, 45)
+b1.set_initial_conditions(100, 50, 80, 0.01, 0, 1, 1, 45)
 b1.prijeposlije(0.01)
 t1, y1, Euk1, Ep1, Ek1, Eel1 = b1.range_bez(0.01, 50)
 
@@ -30,8 +30,8 @@ plt.show()
 
 
 # s otporm zraka
-b2 = b.BungeeJumping(120, 50, 80, 0.01, 1, 1, 1, 45)
-b2.set_initial_conditions(120, 50, 80, 0.01, 1, 1, 1, 45)
+b2 = b.BungeeJumping(100, 50, 80, 0.01, 1, 1, 1, 45)
+b2.set_initial_conditions(100, 50, 80, 0.01, 1, 1, 1, 45)
 b2.prijeposlije(0.01)
 t2, y2, Euk2, Ep2, Ek2, Eel2 = b2.range(0.01, 50)
 
